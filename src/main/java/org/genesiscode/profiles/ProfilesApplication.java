@@ -2,6 +2,7 @@ package org.genesiscode.profiles;
 
 import org.genesiscode.profiles.beans.Animal;
 import org.genesiscode.profiles.beans.Cat;
+import org.genesiscode.profiles.beans.DataSource;
 import org.genesiscode.profiles.beans.Monkey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,10 +15,12 @@ import org.springframework.context.annotation.Profile;
 public class ProfilesApplication implements CommandLineRunner {
 
     private final Animal animal;
+    private final DataSource dataSource;
 
     @Autowired
-    public ProfilesApplication(Animal animal) {
+    public ProfilesApplication(Animal animal, DataSource dataSource) {
         this.animal = animal;
+        this.dataSource = dataSource;
     }
 
     public static void main(String[] args) {
@@ -26,8 +29,9 @@ public class ProfilesApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        System.out.println(animal.getClass().getSimpleName());
+        System.out.print(animal.getClass().getSimpleName() + "\t");
         animal.makeSound();
+        System.out.println(dataSource.toString());
     }
 
     static class LoadBean {

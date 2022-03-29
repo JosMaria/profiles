@@ -5,6 +5,7 @@ import org.genesiscode.profiles.beans.Cat;
 import org.genesiscode.profiles.beans.DataSource;
 import org.genesiscode.profiles.beans.Monkey;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,9 @@ public class ProfilesApplication implements CommandLineRunner {
 
     private final Animal animal;
     private final DataSource dataSource;
+
+    @Value("${company.name}")
+    private String nameCompany;
 
     @Autowired
     public ProfilesApplication(Animal animal, DataSource dataSource) {
@@ -32,6 +36,7 @@ public class ProfilesApplication implements CommandLineRunner {
         System.out.print(animal.getClass().getSimpleName() + "\t");
         animal.makeSound();
         System.out.println(dataSource.toString());
+        System.out.println(nameCompany);
     }
 
     static class LoadBean {

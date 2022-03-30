@@ -1,4 +1,9 @@
 # { application-dev, application-qa, application-prod }
 # spring.profiles.active=cat,qa,dev,prod # The last item will be run, In this case prod
 # spring.profiles.active=cat,dev # Unique item (dev) then it will be run
-spring.profiles.active=cat,qa,dev,prod
+spring:
+  profiles:
+    active: cat,prod
+
+server:
+  port: 8000

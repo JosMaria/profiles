@@ -3,7 +3,39 @@
 # spring.profiles.active=cat,dev # Unique item (dev) then it will be run
 spring:
   profiles:
-    active: cat,prod
+    active:
+      - bird
+      - qa
 
 server:
   port: 8000
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+server:
+  port: 8090
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: qa
+
+server:
+  port: 8091
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+server:
+  port: 8092
